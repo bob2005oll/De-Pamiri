@@ -34,12 +34,14 @@ const resources = {
       },
       store: {
         badge: 'Cultural Store',
-        title: 'De Pamiri: The Soul of Pamir',
+        title: 'De Pamiri Handicraft: The Soul of Pamir in Every Stitch',
         description:
           'Bring home handpicked pieces of Pamiri craft, mountain hospitality, and the quiet beauty of Tajik tradition.',
         addressLabel: 'Store address',
-        address: 'Dushanbe, Tajikistan',
-        mapTitle: 'De Pamiri store location map',
+        address: '📍 A.Davron 22, Khorog Central Park, GBAO, Tajikistan',
+        mapTitle: 'De Pamiri Handicraft store location map',
+        galleryAlt: 'De Pamiri Handicraft store slide',
+        gallerySlideLabel: 'Show store gallery slide',
         products: [
           {
             name: 'Pamiri Textile Sets',
@@ -90,14 +92,14 @@ const resources = {
         ],
       },
       currency: {
-        badge: 'Exchange Rates',
-        title: 'Simple travel rates',
-        subtitle: 'Reference rates for quick planning before your Pamir journey.',
+        badge: 'Live Rates',
+        title: 'Current Exchange Rates',
+        subtitle: 'Live rates updated daily for planning your Pamir trip',
         rates: [
           {
             flag: '🇺🇸',
             pair: 'USD / TJS',
-            rate: '10.92',
+            rate: '10.95',
           },
           {
             flag: '🇪🇺',
@@ -125,10 +127,10 @@ const resources = {
         addressLabel: 'Address',
         phone: '+992 93 000 00 00',
         storePhone: '+992 98 000 00 00',
-        email: 'hello@depamiri.com',
-        storeEmail: 'store@depamiri.com',
+        email: 'depamiritravel@gmail.com',
+        storeEmail: 'badakhshanca@gmail.com',
         whatsappText: 'Message us on WhatsApp',
-        address: 'Dushanbe, Tajikistan',
+        address: 'Khorog, Tajikistan',
         socialsTitle: 'Social channels',
         instagram: 'Instagram',
         facebook: 'Facebook',
@@ -183,12 +185,14 @@ const resources = {
       },
       store: {
         badge: 'Культурный магазин',
-        title: 'De Pamiri: Душа Памира',
+        title: 'De Pamiri Handicraft: Душа Памира в каждом стежке',
         description:
           'Увезите с собой отобранные изделия памирского ремесла, горное гостеприимство и спокойную красоту традиций Таджикистана.',
         addressLabel: 'Адрес магазина',
-        address: 'Душанбе, Таджикистан',
-        mapTitle: 'Карта расположения магазина De Pamiri',
+        address: '📍 Э.Даврон 22, Центральный парк Хорога, ГБАО, Таджикистан',
+        mapTitle: 'Карта расположения магазина De Pamiri Handicraft',
+        galleryAlt: 'Слайд магазина De Pamiri Handicraft',
+        gallerySlideLabel: 'Показать слайд галереи магазина',
         products: [
           {
             name: 'Памирские текстильные наборы',
@@ -239,14 +243,14 @@ const resources = {
         ],
       },
       currency: {
-        badge: 'Курсы валют',
-        title: 'Простые дорожные курсы',
-        subtitle: 'Ориентировочные курсы для быстрого планирования поездки на Памир.',
+        badge: 'Актуальные курсы',
+        title: 'Текущие курсы валют',
+        subtitle: 'Актуальные курсы, обновляемые ежедневно, для планирования поездки на Памир',
         rates: [
           {
             flag: '🇺🇸',
             pair: 'USD / TJS',
-            rate: '10.92',
+            rate: '10.95',
           },
           {
             flag: '🇪🇺',
@@ -274,10 +278,10 @@ const resources = {
         addressLabel: 'Адрес',
         phone: '+992 93 000 00 00',
         storePhone: '+992 98 000 00 00',
-        email: 'hello@depamiri.com',
-        storeEmail: 'store@depamiri.com',
+        email: 'depamiritravel@gmail.com',
+        storeEmail: 'badakhshanca@gmail.com',
         whatsappText: 'Написать в WhatsApp',
-        address: 'Душанбе, Таджикистан',
+        address: 'Хорог, Таджикистан',
         socialsTitle: 'Социальные сети',
         instagram: 'Instagram',
         facebook: 'Facebook',

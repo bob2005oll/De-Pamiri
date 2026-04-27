@@ -17,16 +17,19 @@ const socials = [
     key: 'instagram',
     href: 'https://instagram.com/depamiri',
     Icon: Instagram,
+    color: '#E4405F',
   },
   {
     key: 'facebook',
     href: 'https://facebook.com/depamiri',
     Icon: Facebook,
+    color: '#1877F2',
   },
   {
     key: 'youtube',
     href: 'https://youtube.com/@depamiri1238',
     Icon: Youtube,
+    color: '#FF0000',
   },
 ];
 
@@ -82,16 +85,16 @@ export default function ContactsSection() {
                 {t('contacts.socialsTitle')}
               </p>
               <div className="mt-4 flex gap-3">
-                {socials.map(({ key, href, Icon }) => (
+                {socials.map(({ key, href, Icon, color }) => (
                   <a
                     key={key}
                     href={href}
                     target="_blank"
                     rel="noreferrer"
                     aria-label={t(`contacts.${key}`)}
-                    className="flex h-11 w-11 items-center justify-center rounded-full bg-pamiri-mist text-slate-400 transition-all duration-300 hover:-translate-y-0.5 hover:bg-pamiri-blue hover:text-white hover:shadow-soft"
+                    className="flex h-11 w-11 items-center justify-center rounded-full bg-pamiri-mist transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-soft"
                   >
-                    <Icon className="h-5 w-5" strokeWidth={2} />
+                    <Icon className="h-5 w-5" strokeWidth={2} style={{ color }} />
                   </a>
                 ))}
               </div>

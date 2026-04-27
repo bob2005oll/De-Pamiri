@@ -1,16 +1,54 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useInView from '../hooks/useInView.js';
+
+const EXCHANGE_RATE_API_URL =
+  'https://v6.exchangerate-api.com/v6/3f5dc9f7391396ccd136d17c/latest/USD';
+
+const FALLBACK_RATES = {
+  'USD / TJS': '10.95',
+  'EUR / TJS': '11.76',
+  'RUB / TJS': '0.12',
+};
 
 export default function CurrencySection() {
   const { t } = useTranslation();
   const rates = t('currency.rates', { returnObjects: true });
   const rateItems = Array.isArray(rates) ? rates : [];
+  const [liveRates, setLiveRates] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const { ref, isInView } = useInView();
 
-  // Replace the static placeholders with a live provider when the API contract is ready.
-  // Example:
-  // const response = await fetch('https://api.exchangerate.host/latest?base=USD&symbols=TJS');
-  // const data = await response.json();
+  useEffect(() => {
+    const fetchExchangeRates = async () => {
+      try {
+        const response = await fetch(EXCHANGE_RATE_API_URL);
+
+        if (!response.ok) {
+          throw new Error(`ExchangeRate-API request failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const { conversion_rates: conversionRates } = data;
+
+        if (!conversionRates?.TJS || !conversionRates?.EUR || !conversionRates?.RUB) {
+          throw new Error('ExchangeRate-API response is missing required rates.');
+        }
+
+        setLiveRates({
+          'USD / TJS': conversionRates.TJS.toFixed(2),
+          'EUR / TJS': (conversionRates.TJS / conversionRates.EUR).toFixed(2),
+          'RUB / TJS': (conversionRates.TJS / conversionRates.RUB).toFixed(2),
+        });
+      } catch (error) {
+        console.error('Failed to fetch live exchange rates. Using fallback rates.', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchExchangeRates();
+  }, []);
 
   return (
     <section ref={ref} className="bg-white px-4 py-24 sm:px-6 lg:px-8">
@@ -42,10 +80,14 @@ export default function CurrencySection() {
                 {item.flag}
               </div>
               <p className="mt-5 text-sm font-bold uppercase tracking-[0.18em] text-slate-400">
-                {item.pair}
+                {formatPairLabel(item.pair)}
               </p>
               <p className="mt-3 text-4xl font-black tracking-normal text-pamiri-ink">
-                {item.rate}
+                {isLoading ? (
+                  <span className="inline-block h-10 w-24 animate-pulse rounded-xl bg-slate-100 align-middle" />
+                ) : (
+                  `${liveRates[item.pair] || FALLBACK_RATES[item.pair] || item.rate} ${getQuoteCurrency(item.pair)}`
+                )}
               </p>
             </article>
           ))}
@@ -62,4 +104,16 @@ export default function CurrencySection() {
       </div>
     </section>
   );
+}
+
+function formatPairLabel(pair) {
+  const [baseCurrency] = pair.split(' / ');
+
+  return `1 ${baseCurrency} → 🇹🇯`;
+}
+
+function getQuoteCurrency(pair) {
+  const [, quoteCurrency] = pair.split(' / ');
+
+  return quoteCurrency;
 }
